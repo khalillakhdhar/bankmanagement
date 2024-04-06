@@ -3,6 +3,7 @@ package com.elitech.model.dto;
 import java.math.BigDecimal;
 
 import com.elitech.model.Types;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -13,8 +14,11 @@ public class TransactionDto {
 	private BigDecimal montant;
 	@NotBlank
 	private Types type;
-	private UtilisateurDto source;
-	private UtilisateurDto destination;
+	@JsonIgnoreProperties("transactions")
+	private CompteDto source;
+	@JsonIgnoreProperties("transactions")
+
+	private CompteDto destination;
 
 
 

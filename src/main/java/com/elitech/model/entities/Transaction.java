@@ -32,8 +32,8 @@ private BigDecimal montant;
 @Enumerated(EnumType.STRING)
 private Types type;
 @ManyToOne(optional = false,fetch = FetchType.EAGER)
-private Utilisateur source;
+private Compte source;
 @ManyToOne(optional = true,fetch = FetchType.EAGER)
-private Utilisateur destination;
+private Compte destination;
 
 }

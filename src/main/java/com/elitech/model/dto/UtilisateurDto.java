@@ -17,12 +17,15 @@ public class UtilisateurDto {
 	@Email
 	private String email;
 	
-	@JsonIgnoreProperties(allowGetters = true,value="password")
+	@JsonIgnoreProperties(allowSetters  = true,value="password")
 	@NotBlank
 	@Size(min = 8)
 	private String password;
+	@JsonIgnoreProperties("utilisateur")
 	private List<CompteDto> comptes;
-	private List<TransactionDto> transactions;
+
+	@JsonIgnoreProperties("utilisateur")
+
 	private ProfileDto profile;
 	
 	

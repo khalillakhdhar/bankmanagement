@@ -1,6 +1,7 @@
 package com.elitech.model.entities;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import com.elitech.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -27,8 +29,10 @@ import lombok.Setter;
 public class Compte extends BaseEntity {
 	private BigDecimal solde;
 	@ManyToOne(optional = false,fetch = FetchType.EAGER)
-	@JsonIgnoreProperties("comptes")
-	private Utilisateur utilisateur;
 	
+	private Utilisateur utilisateur;
+	@OneToMany(mappedBy = "source")
+	
+	private List<Transaction> transactions;
 
 }

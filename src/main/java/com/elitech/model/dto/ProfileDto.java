@@ -1,6 +1,8 @@
 package com.elitech.model.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 @Data
@@ -9,5 +11,7 @@ public class ProfileDto {
 	private String phoneNumber;
 	
 	private String adresse;
+	@JsonIgnoreProperties("profile")
+
 	private UtilisateurDto utilisateur; 
 }
