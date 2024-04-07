@@ -28,7 +28,7 @@ import lombok.Setter;
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class Transaction extends BaseEntity {
 
-private BigDecimal montant;
+private double montant;
 @Enumerated(EnumType.STRING)
 private Types type;
 @ManyToOne(optional = false,fetch = FetchType.EAGER)

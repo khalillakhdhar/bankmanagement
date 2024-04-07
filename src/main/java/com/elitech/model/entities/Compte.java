@@ -27,7 +27,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class Compte extends BaseEntity {
-	private BigDecimal solde;
+	private double solde;
 	@ManyToOne(optional = false,fetch = FetchType.EAGER)
 	
 	private Utilisateur utilisateur;
