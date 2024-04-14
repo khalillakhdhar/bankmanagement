@@ -5,8 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 @Data
-public class ProfileDto {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
+
+public class ProfileDto  {
 	@Size(min = 8,max = 16)
 	private String phoneNumber;
 	

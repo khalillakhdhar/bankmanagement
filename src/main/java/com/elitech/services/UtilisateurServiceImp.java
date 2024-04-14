@@ -10,18 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.elitech.model.dto.CompteDto;
 import com.elitech.model.dto.ProfileDto;
-import com.elitech.model.dto.TransactionDto;
 import com.elitech.model.dto.UtilisateurDto;
 import com.elitech.model.entities.Compte;
 import com.elitech.model.entities.Profile;
-import com.elitech.model.entities.Transaction;
 import com.elitech.model.entities.Utilisateur;
 import com.elitech.model.mappers.CompteMapper;
 import com.elitech.model.mappers.ProfileMapper;
-import com.elitech.model.mappers.TransactionMapper;
 import com.elitech.model.mappers.UtilisateurMapper;
 import com.elitech.repository.CompteRepository;
-import com.elitech.repository.TransactionRepository;
 import com.elitech.repository.UtilisateurRepository;
 
 import jakarta.persistence.EntityNotFoundException;

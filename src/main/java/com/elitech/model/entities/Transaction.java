@@ -1,7 +1,6 @@
 package com.elitech.model.entities;
 
-import java.math.BigDecimal;
-import java.util.List;
+
 
 import com.elitech.model.BaseEntity;
 import com.elitech.model.Types;
@@ -24,14 +23,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class Transaction extends BaseEntity {
 
 private double montant;
 @Enumerated(EnumType.STRING)
 private Types type;
-@ManyToOne(optional = false,fetch = FetchType.EAGER)
+@ManyToOne(optional = true,fetch = FetchType.EAGER)
 private Compte source;
 @ManyToOne(optional = true,fetch = FetchType.EAGER)
 private Compte destination;

@@ -1,16 +1,18 @@
 package com.elitech.model.dto;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 @Data
-public class CompteDto {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
+
+public class CompteDto extends BaseDto {
 	@NotNull
-	private BigDecimal solde;
+	private double solde;
 	@JsonIgnoreProperties("comptes")
 
 	private UtilisateurDto utilisateur;

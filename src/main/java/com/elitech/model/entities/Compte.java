@@ -1,6 +1,5 @@
 package com.elitech.model.entities;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import com.elitech.model.BaseEntity;
@@ -24,7 +23,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class Compte extends BaseEntity {
 	private double solde;

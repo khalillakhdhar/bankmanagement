@@ -1,6 +1,5 @@
 package com.elitech.services;
 
-import java.math.BigDecimal;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,7 +51,7 @@ if(idSource!=0)
 }
 if(idDestination!=0)
 {
-	Compte destinCompte=compteRepository.findById(idSource).get();
+	Compte destinCompte=compteRepository.findById(idDestination).get();
 	transaction.setDestination(destinCompte);
 
 }
