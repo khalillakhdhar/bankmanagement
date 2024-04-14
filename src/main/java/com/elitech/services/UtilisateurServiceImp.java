@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.elitech.model.dto.CompteDto;
@@ -26,7 +28,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UtilisateurServiceImp implements UtilisateurService {
-
+	  @Autowired
+	    private PasswordEncoder passwordEncoder;
+	
 	private final UtilisateurRepository utilisateurRepository;
 	
 	  private final CompteRepository compteRepository;
@@ -34,6 +38,8 @@ public class UtilisateurServiceImp implements UtilisateurService {
 	@Override
 	public UtilisateurDto addOneUtilisateur(UtilisateurDto utilisateurDto) {
 	    Utilisateur utilisateur = UtilisateurMapper.convertToEntity(utilisateurDto);
+	    utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+	    
 	    Utilisateur savedUtilisateur = utilisateurRepository.save(utilisateur);
 	    return UtilisateurMapper.convertToDTO(savedUtilisateur);
 	}

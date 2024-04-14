@@ -40,7 +40,8 @@ public class Utilisateur extends BaseEntity {
 	@OneToOne(mappedBy = "utilisateur")
 	
 	private Profile profile;
-
+	@Column(columnDefinition = "varchar(30) default 'USER_ROLES' ")
+	  private String roles;
 	
 	
 
