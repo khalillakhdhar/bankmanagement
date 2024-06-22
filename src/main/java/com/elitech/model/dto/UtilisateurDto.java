@@ -13,7 +13,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 
 public class UtilisateurDto extends BaseDto {
 	@NotBlank
@@ -33,6 +32,7 @@ public class UtilisateurDto extends BaseDto {
 
 	private ProfileDto profile;
 	private String roles;
+	private String etat;
 	
 	
 	

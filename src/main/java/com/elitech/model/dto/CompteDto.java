@@ -8,7 +8,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 
 public class CompteDto extends BaseDto {
 	@NotNull

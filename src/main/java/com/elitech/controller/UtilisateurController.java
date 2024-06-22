@@ -1,6 +1,12 @@
 package com.elitech.controller;
 
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +16,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,19 +64,28 @@ public class UtilisateurController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthRequest authRequest){
+    public ResponseEntity<Map<String, Object>> login(@RequestBody AuthRequest authRequest){
         try {
             Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
             if(authenticate.isAuthenticated()){
-                return ResponseEntity.ok(jwtService.generateToken(authRequest.getUserName()));
+                String token = jwtService.generateToken(authRequest.getUserName());
+                UserDetails userDetails = (UserDetails) authenticate.getPrincipal();
+                List<String> roles = userDetails.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .collect(Collectors.toList());
+                Map<String, Object> response = new HashMap<>();
+                response.put("token", token);
+                response.put("roles", roles);
+                return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("message", "Invalid credentials"));
             }
         } catch (UsernameNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid user request");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("message", "Invalid user request"));
         }
     }
+
     
     @GetMapping("/{id}/comptes")
     public ResponseEntity<UtilisateurDto> getUserByComptes(@PathVariable long id)

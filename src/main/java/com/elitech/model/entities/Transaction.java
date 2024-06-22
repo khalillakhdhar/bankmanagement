@@ -23,7 +23,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class Transaction extends BaseEntity {
 

@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 
 public class ProfileDto  {
 	@Size(min = 8,max = 16)

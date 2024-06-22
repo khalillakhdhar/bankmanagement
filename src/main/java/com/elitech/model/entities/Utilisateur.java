@@ -24,7 +24,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class Utilisateur extends BaseEntity {
 	@Column(nullable = false)
@@ -42,6 +41,7 @@ public class Utilisateur extends BaseEntity {
 	private Profile profile;
 	@Column(columnDefinition = "varchar(30) default 'USER_ROLES' ")
 	  private String roles;
+	private String etat;
 	
 	
 
