@@ -49,7 +49,7 @@ public class UtilisateurController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN_ROLES')")
+    //@PreAuthorize("hasAuthority('ADMIN_ROLES')")
     public ResponseEntity<Page<UtilisateurDto>> getAllUtilisateurs(Pageable pageable) {
         Page<UtilisateurDto> utilisateurs = utilisateurService.getAllUtilisateur(pageable);
         return ResponseEntity.ok(utilisateurs);
