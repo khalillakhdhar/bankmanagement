@@ -31,7 +31,7 @@ public class BankmanagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-	//	utilisateurService.addOneUtilisateur(UtilisateurMapper.convertToDTO(new Utilisateur("khalil","khalil@gmail.com", "azerty", null, null, "ADMIN_ROLES,USER_ROLES")));
+//utilisateurService.addOneUtilisateur(UtilisateurMapper.convertToDTO(new Utilisateur("khalil","khalil@gmail.com","azerty", null, null, "ADMIN_ROLES,USER_ROLES","actif")));
 		
 	}
 }
